@@ -66,8 +66,8 @@ namespace _13_09web_student.Controllers
         {
             return View(lstStudent);
         }
-        //[Route("Admin/Student/Add")]
-         [HttpGet("/Admin/Student/Add")]
+        [Route("Admin/Student/Add")]
+        // [HttpGet("/Admin/Student/Add")]
         public IActionResult Create()
         {
 
@@ -84,14 +84,14 @@ namespace _13_09web_student.Controllers
             };
             return View();
         }
-        [HttpPost("/Admin/Student/Add")]
+        [HttpPost("Admin/Student/Add")] 
         //public IActionResult Create(Student student)
         //{
         //    student.Id = lstStudent.Last<Student>().Id +1;
         //    lstStudent.Add(student);
         //    return View("Index",lstStudent);
         //}
-        public async Task<IActionResult> Craete(Student student)
+        public async Task<IActionResult> Create(Student student)
         {
             if(student.Img != null)
             {
