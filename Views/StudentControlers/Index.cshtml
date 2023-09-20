@@ -2,7 +2,19 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Student List";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
 }
+@section Scripts{
+    <script>
+        var table = document.querySelector("table");
+        table.onclick = function onTableClick() {
+            table.style = "background-color: yellow;"
+        }
+
+    </script>
+}
+
 @model IEnumerable<Student>
 <a href="/Admin/Student/Add" class="btn btn-primary">Create Student</a>
 <table class="table table-striped">
