@@ -16,7 +16,7 @@ namespace _13_09web_student.ViewComponents
                 new MenuItem(){ Id =4, Name="Courses", Link="Courses/List"}
             };
         }
-        public async Task<IViewComponentResult> InvoleAsync()//hien thi view theo co che bat dong bo
+        public async Task<IViewComponentResult> InvokeAsync()//hien thi view theo co che bat dong bo
         {
             return View("RenderLeftMenu", menuItems);
         }
