@@ -70,7 +70,6 @@ namespace _13_09web_student.Controllers
         // [HttpGet("/Admin/Student/Add")]
         public IActionResult Create()
         {
-
             //lay ds cac gia tri Gender de hien thi radio button tren form
             ViewBag.AllGenders = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
             //lay ds cac gia tri tren Branch de hien thi select-option tren form
@@ -101,10 +100,26 @@ namespace _13_09web_student.Controllers
                     await student.Img.CopyToAsync(fileStream);
                 }
             }
-            student.Id = lstStudent.Last<Student>().Id + 1;
-            lstStudent.Add(student);
-            return View("Index",lstStudent);
+            if(ModelState.IsValid)
+            {
+                student.Id = lstStudent.Last<Student>().Id + 1;
+                lstStudent.Add(student);
+                return View("Index", lstStudent);
+            }
+            ViewBag.AllGenders = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
+            //lay ds cac gia tri tren Branch de hien thi select-option tren form
+            //de hien thi select-option tren view can dung List<SelectListItem>
+            ViewBag.AllBranches = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "IT", Value = "1"},
+                new SelectListItem { Text = "BE", Value = "2" },
+                new SelectListItem { Text = "CE", Value = "3" },
+                new SelectListItem { Text = "EE", Value = "4" }
+            };
+            return View();
         }
 
     }
-}
+
+    }
+
